@@ -1,0 +1,32 @@
+.notice{background:#FBF3E4;border:1px solid #F0DDB5;color:#7A5C1E;border-radius:10px;padding:11px 14px;font-size:12px;margin-bottom:15px;line-height:1.5}
+.notice.err{background:#FBECE8;border-color:#F1CBC1;color:#8E3B2A}
+.side-col{display:grid;gap:16px;align-content:start;min-width:0}
+.map-toolbar{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.map-toolbar input{flex:1 1 180px;min-width:0;border:1px solid var(--line);border-radius:8px;padding:8px 11px;font:12px 'DM Sans';background:#fff}
+.tool{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 11px;font:500 11px 'DM Sans';color:#4A594D;cursor:pointer}
+.tool:hover{background:var(--pale)}.tool.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+.tool.save{background:var(--green);color:#fff;border-color:var(--green)}
+.map-live{height:380px;border-radius:9px;overflow:hidden;z-index:0}
+.hint{padding-top:9px}
+.field-list{list-style:none;margin:0;padding:0;display:grid;gap:7px;max-height:190px;overflow:auto}
+.field-list li{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;cursor:pointer;font-size:12px}
+.field-list li:hover,.field-list li.on{background:var(--pale)}
+.field-list li small{color:var(--muted);margin-left:auto}
+.field-list li button{border:0;background:none;color:#B05A48;cursor:pointer;font-size:13px}
+.field-list .empty{color:var(--muted);cursor:default;border-style:dashed}
+.risk-item .bar{transition:width .4s}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tabs button{border:1px solid var(--line);background:#fff;border-radius:7px;padding:6px 12px;font:500 11px 'DM Sans';cursor:pointer;color:#637066}
+.tabs button.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+.chart-container.tall{height:240px}
+.soil-now{border-top:1px solid var(--line);margin-top:14px;padding-top:12px;display:grid;gap:6px;font-size:11px}
+.soil-now div{display:flex;justify-content:space-between;color:#6D796F}.soil-now strong{color:#35443A}
+.soil-now h3{font:700 11px Manrope;margin:0 0 4px;color:var(--forest)}
+.forecast-panel{margin-top:16px}
+.table-wrap{overflow-x:auto;margin-top:14px}
+.fc-table{width:100%;border-collapse:collapse;font-size:11px;min-width:620px}
+.fc-table th,.fc-table td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.fc-table th{color:#8A968C;font-weight:600;font-size:10px}
+.loading{opacity:.5;pointer-events:none}
+.location-pill b{font-weight:600;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:bottom}
+@media(max-width:760px){.map-live{height:300px}}
