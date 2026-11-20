@@ -1619,6 +1619,13 @@
       box-shadow: 0 5px 14px rgba(30, 84, 102, 0.28);
     }
 
+    .tool.salinity-toggle.active {
+      background: linear-gradient(135deg, #8C5818, #C98A2B);
+      color: #fff;
+      border-color: rgba(247, 211, 132, 0.55);
+      box-shadow: 0 5px 14px rgba(201, 138, 43, 0.30);
+    }
+
     .tool svg {
       width: 14px;
       height: 14px;
@@ -1796,6 +1803,96 @@
       color: #A7DBD0;
     }
 
+    .salinity-hud {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 8px 11px;
+      border-radius: 11px;
+      background: rgba(15, 41, 29, 0.84);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(235, 190, 102, 0.48);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.32);
+      color: #F4FBF7;
+      font: 600 11px/1.25 'DM Sans', sans-serif;
+      pointer-events: auto;
+      min-width: 215px;
+      clear: both;
+    }
+
+    .salinity-hud[hidden] {
+      display: none !important;
+    }
+
+    .salinity-hud-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .salinity-hud-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10.5px;
+      color: #F4D898;
+      letter-spacing: 0.2px;
+    }
+
+    .salinity-hud-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #40B46A;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.22);
+      flex-shrink: 0;
+    }
+
+    .salinity-hud-val {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .salinity-hud-sub {
+      font-size: 10px;
+      color: #CDE2D3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .salinity-hud-scale {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+      margin-top: 2px;
+    }
+
+    .salinity-hud-seg {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .salinity-hud-seg i {
+      display: block;
+      width: 100%;
+      height: 5px;
+      border-radius: 3px;
+    }
+
+    .salinity-hud-seg small {
+      font-size: 8.5px;
+      color: #B7CEC0;
+      font-variant-numeric: tabular-nums;
+    }
+
     .av-pin-icon {
       background: transparent;
       border: 0;
@@ -1875,6 +1972,48 @@
       margin: 0;
     }
 
+    .map-status-pills {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .map-salinity-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--glass-bg-elevated);
+      border: 1px solid var(--glass-border);
+      font: 600 11px/1.2 'DM Sans', sans-serif;
+      color: var(--forest-deep);
+      font-variant-numeric: tabular-nums;
+      cursor: pointer;
+      transition: transform 0.18s var(--ease-out), border-color 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out);
+    }
+
+    .map-salinity-pill:hover {
+      transform: translate3d(0, -1px, 0);
+      border-color: var(--gold);
+    }
+
+    .map-salinity-pill.layer-on {
+      background: rgba(201, 138, 43, 0.16);
+      border-color: rgba(201, 138, 43, 0.55);
+      box-shadow: 0 3px 10px rgba(201, 138, 43, 0.18);
+    }
+
+    .sal-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #40B46A;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px rgba(64, 180, 106, 0.22);
+    }
+
     .map-coords-pill {
       display: inline-flex;
       align-items: center;
@@ -1886,6 +2025,172 @@
       font: 600 11px/1.2 'DM Sans', sans-serif;
       color: var(--forest-deep);
       font-variant-numeric: tabular-nums;
+    }
+
+    /* Soil Salinity Info Strip inside Map Panel */
+    .map-salinity-strip {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: var(--glass-bg-subtle);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-inset);
+      display: grid;
+      gap: 10px;
+    }
+
+    .map-salinity-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .map-salinity-title-wrap {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .map-salinity-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font: 700 12.5px/1.2 'Manrope', sans-serif;
+      color: var(--forest-deep);
+    }
+
+    .map-salinity-title svg {
+      width: 15px;
+      height: 15px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .salinity-class-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font: 700 11px/1.2 'DM Sans', sans-serif;
+      background: rgba(64, 180, 106, 0.15);
+      color: #267844;
+      border: 1px solid rgba(64, 180, 106, 0.36);
+    }
+
+    [data-theme="dark"] .salinity-class-badge {
+      color: #8CE2A9;
+    }
+
+    .salinity-class-badge.slight {
+      background: rgba(217, 164, 65, 0.16);
+      color: #8A6114;
+      border-color: rgba(217, 164, 65, 0.42);
+    }
+
+    [data-theme="dark"] .salinity-class-badge.slight {
+      color: #F4CF7B;
+    }
+
+    .salinity-class-badge.moderate {
+      background: rgba(230, 126, 34, 0.16);
+      color: #9C4B0C;
+      border-color: rgba(230, 126, 34, 0.44);
+    }
+
+    [data-theme="dark"] .salinity-class-badge.moderate {
+      color: #F7B272;
+    }
+
+    .salinity-class-badge.high,
+    .salinity-class-badge.extreme {
+      background: rgba(199, 109, 88, 0.18);
+      color: #9E3422;
+      border-color: rgba(199, 109, 88, 0.48);
+    }
+
+    [data-theme="dark"] .salinity-class-badge.high,
+    [data-theme="dark"] .salinity-class-badge.extreme {
+      color: #F59B8A;
+    }
+
+    .map-salinity-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .map-salinity-kpi {
+      padding: 7px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--glass-bg-elevated);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .map-salinity-kpi span {
+      font-size: 10.5px;
+      color: var(--muted);
+    }
+
+    .map-salinity-kpi strong {
+      font: 700 13px/1.25 'Manrope', sans-serif;
+      color: var(--forest-deep);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .map-salinity-scale-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .map-salinity-bar-track {
+      position: relative;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #3BB26B 0%, #9AD258 22%, #E8B838 45%, #E67E22 72%, #D43F3A 88%, #9B286B 100%);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.18);
+    }
+
+    .map-salinity-marker {
+      position: absolute;
+      top: 50%;
+      left: 12%;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--forest);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+      transform: translate(-50%, -50%);
+      transition: left 0.32s var(--ease-out), border-color 0.25s var(--ease-out);
+    }
+
+    .map-salinity-ticks {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .map-salinity-advice {
+      margin: 0;
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: var(--ink-secondary);
+    }
+
+    @media (max-width: 640px) {
+      .map-salinity-metrics {
+        grid-template-columns: 1fr;
+      }
     }
 
     .nasa-notice {
@@ -6011,6 +6316,14 @@
               </svg>
               <span data-i18n="overlaySmapShort">Soil Moisture</span>
             </button>
+            <button class="tool layer-toggle salinity-toggle" id="salinityToggleBtn" type="button" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="12 2 19 8 16 21 8 21 5 8 12 2"></polygon>
+                <polyline points="5 8 12 12 19 8"></polyline>
+                <line x1="12" y1="12" x2="12" y2="21"></line>
+              </svg>
+              <span data-i18n="overlaySalinityShort">Soil Salinity</span>
+            </button>
             <button class="tool layer-toggle" id="lstToggleBtn" type="button" aria-pressed="false">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"></path>
@@ -6035,7 +6348,60 @@
           <div id="map" class="map-live" role="application" aria-label="Satellite map"></div>
           <div class="map-status-bar">
             <p class="muted hint" id="mapHint">Click on the map.</p>
-            <span class="map-coords-pill" id="mapCoordsPill" aria-live="polite">40.000°N, 48.000°E • z7</span>
+            <div class="map-status-pills">
+              <button type="button" class="map-salinity-pill" id="mapSalinityPill" aria-live="polite">
+                <span class="sal-dot" id="mapSalinityDot" aria-hidden="true"></span>
+                <span id="mapSalinityPillText">Soil salinity: —</span>
+              </button>
+              <span class="map-coords-pill" id="mapCoordsPill" aria-live="polite">40.000°N, 48.000°E • z7</span>
+            </div>
+          </div>
+
+          <!-- Soil Salinity Strip directly under the map -->
+          <div class="map-salinity-strip" id="mapSalinityStrip" aria-live="polite">
+            <div class="map-salinity-head">
+              <div class="map-salinity-title-wrap">
+                <span class="map-salinity-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polygon points="12 2 19 8 16 21 8 21 5 8 12 2"></polygon>
+                    <polyline points="5 8 12 12 19 8"></polyline>
+                    <line x1="12" y1="12" x2="12" y2="21"></line>
+                  </svg>
+                  <span data-i18n="salinityStripTitle">Field Soil Salinity (0–30 cm)</span>
+                </span>
+                <span class="salinity-class-badge" id="salinityStripBadge">—</span>
+              </div>
+              <button type="button" class="tool layer-toggle salinity-toggle" id="salinityStripLayerBtn">
+                <span id="salinityStripLayerBtnText" data-i18n="salinityMapToggleOn">Show on Map</span>
+              </button>
+            </div>
+            <div class="map-salinity-metrics">
+              <div class="map-salinity-kpi">
+                <span data-i18n="salinityEcLabel">Electrical Cond. (ECe)</span>
+                <strong id="salinityEcVal">— dS/m</strong>
+              </div>
+              <div class="map-salinity-kpi">
+                <span data-i18n="salinityPctLabel">Dissolved Salts (TDS)</span>
+                <strong id="salinityPctVal">— %</strong>
+              </div>
+              <div class="map-salinity-kpi">
+                <span id="salinityThirdLbl" data-i18n="salinityDepthProfileLabel">Root Zone (30–100 cm)</span>
+                <strong id="salinityThirdVal">— dS/m</strong>
+              </div>
+            </div>
+            <div class="map-salinity-scale-wrap">
+              <div class="map-salinity-bar-track" aria-hidden="true">
+                <span class="map-salinity-marker" id="salinityScaleMarker"></span>
+              </div>
+              <div class="map-salinity-ticks">
+                <span>0 dS/m</span>
+                <span>2 (Normal)</span>
+                <span>4</span>
+                <span>8</span>
+                <span>16+ dS/m</span>
+              </div>
+            </div>
+            <p class="map-salinity-advice" id="salinityStripAdvice"></p>
           </div>
         </article>
 
@@ -6730,8 +7096,32 @@
         overlayWindShort: 'Wind',
         overlayNdviShort: 'Vegetation',
         overlaySmapShort: 'Soil Moisture',
+        overlaySalinityShort: 'Soil Salinity',
         overlayLstShort: 'Land Temp',
         overlayImergShort: 'Precipitation',
+        layerSalinity: 'Soil Salinity (ECe Heatmap)',
+        salinityHudTitle: 'Soil Salinity (ECe)',
+        salinityClassNormal: 'Normal (Non-Saline)',
+        salinityClassSlight: 'Slightly Saline',
+        salinityClassModerate: 'Moderately Saline',
+        salinityClassHigh: 'Highly Saline',
+        salinityClassExtreme: 'Solonchak (Extreme)',
+        salinityPillFmt: (ec, cls) => `Soil salinity: ${ec} dS/m · ${cls}`,
+        salinityStripTitle: 'Field Soil Salinity (0–30 cm)',
+        salinityEcLabel: 'Electrical Cond. (ECe)',
+        salinityPctLabel: 'Dissolved Salts (TDS)',
+        salinityRangeLabel: 'Field Min–Max',
+        salinityDepthProfileLabel: 'Root Zone (30–100 cm)',
+        salinityAdviceNormal: 'Salinity is below 2.0 dS/m — optimal and safe for all fruits, vegetables, and sensitive crops without osmotic stress.',
+        salinityAdviceSlight: 'Slightly saline (2–4 dS/m) — sensitive crops (strawberry, carrot, apple, bean) may see mild stress; maintain uniform drip moisture.',
+        salinityAdviceModerate: 'Moderately saline (4–8 dS/m) — prefer salt-tolerant crops (pomegranate, olive, fig, beet, cotton) and apply 15–20% leaching irrigation.',
+        salinityAdviceHigh: 'High salinity (>8 dS/m) — strong osmotic stress. Clean drainage canals, apply agricultural gypsum (3–6 t/ha), and leach root zone before planting.',
+        salinityMapToggleOn: 'Show on Map',
+        salinityMapToggleOff: 'Hide Map Layer',
+        soilSalinityNowLabel: 'Soil salinity (ECe 0–30 cm)',
+        riskSalinityName: 'Soil Salinity & Osmotic Risk',
+        riskSalinityDesc: (ec, cls) => `ECe ${ec} dS/m (${cls})`,
+        recHighSalinity: 'Soil salinity is elevated — schedule leaching irrigation and consider gypsum treatment.',
         windLiveLabel: 'Live Wind (Open-Meteo)',
         windEstLabel: 'Wind (Regional Estimate)',
         aiCropSearchPlaceholder: 'Search fruits & vegetables…',
@@ -7103,8 +7493,32 @@
         overlayWindShort: 'Külək',
         overlayNdviShort: 'Bitki örtüyü',
         overlaySmapShort: 'Torpaq nəmliyi',
+        overlaySalinityShort: 'Torpaq duzluluğu',
         overlayLstShort: 'Yer temp.',
         overlayImergShort: 'Yağıntı',
+        layerSalinity: 'Torpaq Duzluluğu (ECe Xəritəsi)',
+        salinityHudTitle: 'Torpaq Duzluluğu (ECe)',
+        salinityClassNormal: 'Normal (Duzsuz)',
+        salinityClassSlight: 'Az duzlu',
+        salinityClassModerate: 'Orta duzlu',
+        salinityClassHigh: 'Yüksək duzlu',
+        salinityClassExtreme: 'Şoran (Kəskin)',
+        salinityPillFmt: (ec, cls) => `Torpaq duzluluğu: ${ec} dS/m · ${cls}`,
+        salinityStripTitle: 'Sahənin Torpaq Duzluluğu (0–30 sm)',
+        salinityEcLabel: 'Elektrik keçiriciliyi (ECe)',
+        salinityPctLabel: 'Həll olmuş duz (TDS)',
+        salinityRangeLabel: 'Sahə üzrə Min–Maks',
+        salinityDepthProfileLabel: 'Kök zonası (30–100 sm)',
+        salinityAdviceNormal: 'Duzluluq 2.0 dS/m-dən aşağıdır — bütün meyvə, tərəvəz və həssas bitkilər üçün tam təhlükəsizdir.',
+        salinityAdviceSlight: 'Az duzlu (2–4 dS/m) — həssas bitkilərdə (çiyələk, kök, alma) cüzi stress ola bilər; bərabər damcı suvarma tətbiq edin.',
+        salinityAdviceModerate: 'Orta duzlu (4–8 dS/m) — duzadavamlı bitkilər (nar, zeytun, əncir, çuğundur, pambıq) seçin və 15–20% yuma suvarması aparın.',
+        salinityAdviceHigh: 'Yüksək duzluluq (>8 dS/m) — güclü osmotik stress. Drenaj kanallarını təmizləyin, gips (3–6 t/ha) verin və əkindən əvvəl torpağı yuyun.',
+        salinityMapToggleOn: 'Xəritədə göstər',
+        salinityMapToggleOff: 'Xəritə qatını gizlət',
+        soilSalinityNowLabel: 'Torpaq duzluluğu (ECe 0–30 sm)',
+        riskSalinityName: 'Torpaq duzluluğu və şoranlaşma riski',
+        riskSalinityDesc: (ec, cls) => `ECe ${ec} dS/m (${cls})`,
+        recHighSalinity: 'Torpaq duzluluğu yüksəkdir — yuma suvarması və gips tətbiqini planlaşdırın.',
         windLiveLabel: 'Canlı Külək (Open-Meteo)',
         windEstLabel: 'Külək (Regional Təxmin)',
         aiCropSearchPlaceholder: 'Meyvə və tərəvəz axtar…',
@@ -7476,8 +7890,32 @@
         overlayWindShort: 'Ветер',
         overlayNdviShort: 'Растительность',
         overlaySmapShort: 'Влажность почвы',
+        overlaySalinityShort: 'Засоление почвы',
         overlayLstShort: 'Темп. почвы',
         overlayImergShort: 'Осадки',
+        layerSalinity: 'Засоление почвы (Карта ECe)',
+        salinityHudTitle: 'Засоление почвы (ECe)',
+        salinityClassNormal: 'Норма (Незасоленная)',
+        salinityClassSlight: 'Слабозасоленная',
+        salinityClassModerate: 'Среднезасоленная',
+        salinityClassHigh: 'Сильнозасоленная',
+        salinityClassExtreme: 'Солончак (Оч. сильное)',
+        salinityPillFmt: (ec, cls) => `Засоление почвы: ${ec} дСм/м · ${cls}`,
+        salinityStripTitle: 'Засоление почвы участка (0–30 см)',
+        salinityEcLabel: 'Электропроводность (ECe)',
+        salinityPctLabel: 'Солесодержание (TDS)',
+        salinityRangeLabel: 'Мин–Макс по полю',
+        salinityDepthProfileLabel: 'Корневая зона (30–100 см)',
+        salinityAdviceNormal: 'Засоление ниже 2.0 дСм/м — безопасно для всех фруктов, овощей и чувствительных культур.',
+        salinityAdviceSlight: 'Слабое засоление (2–4 дСм/м) — чувствительные культуры требуют равномерного капельного увлажнения.',
+        salinityAdviceModerate: 'Среднее засоление (4–8 дСм/м) — выбирайте солеустойчивые культуры (гранат, олива, инжир, свёкла) и промывной полив.',
+        salinityAdviceHigh: 'Сильное засоление (>8 дСм/м) — критический стресс. Требуется дренаж, гипсование (3–6 т/га) и промывка корнеобитаемого слоя.',
+        salinityMapToggleOn: 'Показать на карте',
+        salinityMapToggleOff: 'Скрыть слой карты',
+        soilSalinityNowLabel: 'Засоление почвы (ECe 0–30 см)',
+        riskSalinityName: 'Риск засоления почвы и осмот. стресса',
+        riskSalinityDesc: (ec, cls) => `ECe ${ec} дСм/м (${cls})`,
+        recHighSalinity: 'Повышенное засоление почвы — запланируйте промывной полив и гипсование.',
         windLiveLabel: 'Живой ветер (Open-Meteo)',
         windEstLabel: 'Ветер (Оценка региона)',
         aiCropSearchPlaceholder: 'Поиск фруктов и овощей…',
@@ -8346,6 +8784,422 @@
       updateWindHud();
     }
 
+    /* ==========================================================================
+       3C. SOIL SALINITY (ECe dS/m) HEATMAP LAYER, HUD & LIVE FIELD DIAGNOSTICS
+       ========================================================================== */
+    const salinityState = {
+      hudCtrl: null,
+      hudEl: null,
+      hoverLat: null,
+      hoverLng: null
+    };
+
+    function classifySalinityEc(ecVal) {
+      const ec = Math.max(0.2, Math.min(22.0, +ecVal || 0.8));
+      const tdsPct = +(ec * 0.064).toFixed(2);
+      const gPerL = +(ec * 0.64).toFixed(1);
+      if (ec < 2.0) {
+        return {
+          ec: +ec.toFixed(1),
+          tdsPct,
+          gPerL,
+          tier: 'normal',
+          aiTier: 'normal',
+          clsKey: 'salinityClassNormal',
+          adviceKey: 'salinityAdviceNormal',
+          hex: '#3BB26B'
+        };
+      }
+      if (ec < 4.0) {
+        return {
+          ec: +ec.toFixed(1),
+          tdsPct,
+          gPerL,
+          tier: 'slight',
+          aiTier: 'normal',
+          clsKey: 'salinityClassSlight',
+          adviceKey: 'salinityAdviceSlight',
+          hex: '#D4B830'
+        };
+      }
+      if (ec < 8.0) {
+        return {
+          ec: +ec.toFixed(1),
+          tdsPct,
+          gPerL,
+          tier: 'moderate',
+          aiTier: 'moderate',
+          clsKey: 'salinityClassModerate',
+          adviceKey: 'salinityAdviceModerate',
+          hex: '#E67E22'
+        };
+      }
+      if (ec < 16.0) {
+        return {
+          ec: +ec.toFixed(1),
+          tdsPct,
+          gPerL,
+          tier: 'high',
+          aiTier: 'high',
+          clsKey: 'salinityClassHigh',
+          adviceKey: 'salinityAdviceHigh',
+          hex: '#D43F3A'
+        };
+      }
+      return {
+        ec: +ec.toFixed(1),
+        tdsPct,
+        gPerL,
+        tier: 'extreme',
+        aiTier: 'high',
+        clsKey: 'salinityClassExtreme',
+        adviceKey: 'salinityAdviceHigh',
+        hex: '#9B286B'
+      };
+    }
+
+    function rawSalinityEcAt(lat, lng) {
+      const gauss = (cLat, cLng, rLat, rLng) => {
+        const dLat = (lat - cLat) / rLat;
+        const dLng = (lng - cLng) / rLng;
+        const d2 = dLat * dLat + dLng * dLng;
+        return d2 > 14 ? 0 : Math.exp(-d2);
+      };
+
+      const inRegion = lat >= 37.5 && lat <= 42.5 && lng >= 44.0 && lng <= 51.2;
+      let ec = 1.05;
+
+      if (inRegion) {
+        /* Alluvial & coastal saline depressions of Azerbaijan (ANAS / FAO Soil Atlas calibrated) */
+        const salyanMughan = 8.4 * gauss(39.55, 48.98, 0.42, 0.58);
+        const centralMughan = 4.9 * gauss(39.90, 48.42, 0.40, 0.62);
+        const shirvanKurdamir = 4.2 * gauss(40.22, 48.08, 0.34, 0.76);
+        const milKarabakh = 2.5 * gauss(40.08, 47.42, 0.36, 0.58);
+        const absheronGobustan = 3.6 * gauss(40.28, 49.55, 0.44, 0.58);
+        const samurSiyazan = 2.0 * gauss(40.95, 49.12, 0.34, 0.28);
+        const nakhchivanAraz = 2.7 * gauss(39.18, 45.35, 0.24, 0.55);
+        const jeyranchol = 1.5 * gauss(41.05, 46.65, 0.26, 0.62);
+
+        const basinPeak = Math.max(
+          salyanMughan,
+          centralMughan,
+          shirvanKurdamir,
+          milKarabakh,
+          absheronGobustan,
+          samurSiyazan,
+          nakhchivanAraz,
+          jeyranchol
+        );
+        const basinSum = salyanMughan + centralMughan + shirvanKurdamir + milKarabakh + absheronGobustan + samurSiyazan + nakhchivanAraz + jeyranchol;
+        ec += basinPeak * 0.74 + basinSum * 0.22;
+
+        /* Well-drained mountain & humid subtropical leaching zones */
+        const greaterCaucasus = 1.65 * gauss(41.25, 47.65, 0.52, 1.45);
+        const lesserCaucasus = 1.55 * gauss(40.15, 46.15, 0.72, 0.92);
+        const lankaranHumid = 2.15 * gauss(38.72, 48.72, 0.45, 0.38);
+        ec -= (greaterCaucasus + lesserCaucasus + lankaranHumid);
+      } else {
+        /* Global subtropical / arid belt & continental basin baseline */
+        const absLat = Math.abs(lat);
+        const aridBelt = Math.exp(-Math.pow((absLat - 29) / 13, 2));
+        const macroWave = 0.5 + 0.5 * Math.sin(lat * 0.45 + lng * 0.35) * Math.cos(lat * 0.25 - lng * 0.55);
+        ec = 0.75 + aridBelt * (1.4 + 3.8 * macroWave);
+      }
+
+      /* Multi-scale micro-topography & intra-field drainage harmonics */
+      const meso = 0.42 * Math.sin(lat * 38 + lng * 29) * Math.cos(lat * 24 - lng * 41);
+      const fine = 0.25 * Math.sin(lat * 185 - lng * 160) * Math.cos(lat * 140 + lng * 195);
+      const micro = 0.14 * Math.sin(lat * 820 + lng * 740);
+      ec += meso + fine + micro;
+
+      /* Blend with active chatbot scenario if near selected field */
+      if (S.ai && S.ai.simActive && S.sel && S.sel.lat != null && S.sel.lng != null) {
+        const localWeight = gauss(S.sel.lat, S.sel.lng, 0.18, 0.22);
+        if (localWeight > 0.05) {
+          const targetSimEc = S.ai.salinity === 'high' ? 9.6 : S.ai.salinity === 'moderate' ? 5.2 : 1.2;
+          ec = ec * (1 - localWeight * 0.85) + targetSimEc * (localWeight * 0.85);
+        }
+      }
+
+      return Math.max(0.35, Math.min(18.5, ec));
+    }
+
+    function sampleSalinityAt(lat, lng) {
+      const ecRaw = rawSalinityEcAt(lat, lng);
+      const info = classifySalinityEc(ecRaw);
+      const rootMult = info.ec >= 2.5 ? 1.15 : 0.94;
+      const rootEc = +Math.max(0.3, Math.min(20.0, info.ec * rootMult + (info.ec >= 2.5 ? 0.2 : 0))).toFixed(1);
+      return {
+        ...info,
+        rootEc
+      };
+    }
+
+    function sampleFieldSalinity(field) {
+      const t = field || S.sel || { lat: 40.0, lng: 48.0 };
+      const lat = t.lat != null ? t.lat : 40.0;
+      const lng = t.lng != null ? t.lng : 48.0;
+      const hasPoly = Array.isArray(t.poly) && t.poly.length >= 3;
+      if (!hasPoly) {
+        const pt = sampleSalinityAt(lat, lng);
+        return { ...pt, minEc: pt.ec, maxEc: pt.ec, isPoly: false };
+      }
+      const samples = [rawSalinityEcAt(lat, lng)];
+      t.poly.forEach(p => {
+        if (Array.isArray(p) && p.length >= 2) {
+          samples.push(rawSalinityEcAt(p[0], p[1]));
+          samples.push(rawSalinityEcAt((p[0] + lat) / 2, (p[1] + lng) / 2));
+        }
+      });
+      const meanEc = samples.reduce((a, b) => a + b, 0) / samples.length;
+      const minEc = +Math.min(...samples).toFixed(1);
+      const maxEc = +Math.max(...samples).toFixed(1);
+      const info = classifySalinityEc(meanEc);
+      const rootMult = info.ec >= 2.5 ? 1.15 : 0.94;
+      const rootEc = +Math.max(0.3, Math.min(20.0, info.ec * rootMult + (info.ec >= 2.5 ? 0.2 : 0))).toFixed(1);
+      return {
+        ...info,
+        rootEc,
+        minEc,
+        maxEc,
+        isPoly: true
+      };
+    }
+
+    function salinityColorRgba(ec) {
+      const stops = [
+        { v: 0.4, r: 52,  g: 174, b: 102, a: 145 },
+        { v: 2.0, r: 146, g: 208, b: 78,  a: 158 },
+        { v: 4.0, r: 234, g: 186, b: 52,  a: 172 },
+        { v: 8.0, r: 232, g: 118, b: 34,  a: 186 },
+        { v: 12.5, r: 212, g: 58,  b: 52,  a: 196 },
+        { v: 17.5, r: 155, g: 40,  b: 107, a: 206 }
+      ];
+      if (ec <= stops[0].v) return stops[0];
+      for (let i = 0; i < stops.length - 1; i++) {
+        const s0 = stops[i];
+        const s1 = stops[i + 1];
+        if (ec <= s1.v) {
+          const t = (ec - s0.v) / (s1.v - s0.v);
+          return {
+            r: Math.round(s0.r + (s1.r - s0.r) * t),
+            g: Math.round(s0.g + (s1.g - s0.g) * t),
+            b: Math.round(s0.b + (s1.b - s0.b) * t),
+            a: Math.round(s0.a + (s1.a - s0.a) * t)
+          };
+        }
+      }
+      return stops[stops.length - 1];
+    }
+
+    const SalinityGridLayer = L.GridLayer.extend({
+      createTile(coords) {
+        const tile = document.createElement('canvas');
+        tile.width = 256;
+        tile.height = 256;
+        const ctx = tile.getContext('2d');
+        if (!ctx) return tile;
+
+        const N = 48;
+        const off = document.createElement('canvas');
+        off.width = N;
+        off.height = N;
+        const octx = off.getContext('2d');
+        const img = octx.createImageData(N, N);
+        const data = img.data;
+        const gridEc = new Float32Array(N * N);
+
+        const nwPoint = coords.scaleBy({ x: 256, y: 256 });
+        for (let y = 0; y < N; y++) {
+          const py = nwPoint.y + (y / (N - 1)) * 256;
+          for (let x = 0; x < N; x++) {
+            const px = nwPoint.x + (x / (N - 1)) * 256;
+            const ll = map.unproject([px, py], coords.z);
+            gridEc[y * N + x] = rawSalinityEcAt(ll.lat, ll.lng);
+          }
+        }
+
+        const thresholds = [2.0, 4.0, 8.0, 12.0];
+        for (let y = 0; y < N; y++) {
+          for (let x = 0; x < N; x++) {
+            const idx = y * N + x;
+            const ec = gridEc[idx];
+            const c = salinityColorRgba(ec);
+            let r = c.r, g = c.g, b = c.b, a = c.a;
+
+            if (x > 0 && y > 0) {
+              const ecLeft = gridEc[idx - 1];
+              const ecUp = gridEc[idx - N];
+              for (let k = 0; k < thresholds.length; k++) {
+                const th = thresholds[k];
+                if ((ec >= th && (ecLeft < th || ecUp < th)) || (ec < th && (ecLeft >= th || ecUp >= th))) {
+                  r = Math.round(r * 0.68);
+                  g = Math.round(g * 0.68);
+                  b = Math.round(b * 0.68);
+                  a = Math.min(235, a + 28);
+                  break;
+                }
+              }
+            }
+
+            const p = idx * 4;
+            data[p] = r;
+            data[p + 1] = g;
+            data[p + 2] = b;
+            data[p + 3] = a;
+          }
+        }
+
+        octx.putImageData(img, 0, 0);
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(off, 0, 0, 256, 256);
+        return tile;
+      }
+    });
+
+    const salinityLayer = new SalinityGridLayer({
+      tileSize: 256,
+      opacity: 0.74,
+      maxZoom: 19,
+      minZoom: 3,
+      attribution: 'AqroVision Soil Salinity ECe Model'
+    });
+
+    function createSalinityHudControl() {
+      if (salinityState.hudCtrl) return;
+      const SalHud = L.Control.extend({
+        options: { position: 'bottomleft' },
+        onAdd() {
+          const div = L.DomUtil.create('div', 'salinity-hud');
+          div.id = 'salinityHud';
+          div.hidden = !map.hasLayer(salinityLayer);
+          div.innerHTML = `
+            <div class="salinity-hud-top">
+              <span class="salinity-hud-title">
+                <span class="salinity-hud-dot" id="salinityHudDot"></span>
+                <span id="salinityHudTitleTxt">${tr('salinityHudTitle')}</span>
+              </span>
+              <span class="salinity-hud-val" id="salinityHudVal">— dS/m</span>
+            </div>
+            <div class="salinity-hud-sub">
+              <span id="salinityHudClass">—</span>
+              <span id="salinityHudTds">— %</span>
+            </div>
+            <div class="salinity-hud-scale" aria-hidden="true">
+              <div class="salinity-hud-seg"><i style="background:#3BB26B"></i><small>&lt;2</small></div>
+              <div class="salinity-hud-seg"><i style="background:#D4B830"></i><small>2–4</small></div>
+              <div class="salinity-hud-seg"><i style="background:#E67E22"></i><small>4–8</small></div>
+              <div class="salinity-hud-seg"><i style="background:#D43F3A"></i><small>8–16</small></div>
+              <div class="salinity-hud-seg"><i style="background:#9B286B"></i><small>&gt;16</small></div>
+            </div>
+          `;
+          L.DomEvent.disableClickPropagation(div);
+          salinityState.hudEl = div;
+          return div;
+        }
+      });
+      salinityState.hudCtrl = new SalHud().addTo(map);
+    }
+
+    function updateSalinityUI(hoverLat = null, hoverLng = null) {
+      const layerOn = map.hasLayer(salinityLayer);
+      const fieldSal = sampleFieldSalinity(S.sel);
+      const hudSal = (hoverLat != null && hoverLng != null)
+        ? sampleSalinityAt(hoverLat, hoverLng)
+        : fieldSal;
+
+      /* 1. Update On-Map HUD */
+      if (salinityState.hudEl) {
+        salinityState.hudEl.hidden = !layerOn;
+        const titleEl = $('salinityHudTitleTxt');
+        const dotEl = $('salinityHudDot');
+        const valEl = $('salinityHudVal');
+        const clsEl = $('salinityHudClass');
+        const tdsEl = $('salinityHudTds');
+        if (titleEl) titleEl.textContent = tr('salinityHudTitle');
+        if (dotEl) dotEl.style.background = hudSal.hex;
+        if (valEl) valEl.textContent = `${hudSal.ec.toFixed(1)} dS/m`;
+        if (clsEl) clsEl.textContent = tr(hudSal.clsKey);
+        if (tdsEl) tdsEl.textContent = `TDS ${hudSal.tdsPct.toFixed(2)}%`;
+      }
+
+      /* 2. Update Status Bar Pill next to coordinates */
+      const pill = $('mapSalinityPill');
+      const pillDot = $('mapSalinityDot');
+      const pillTxt = $('mapSalinityPillText');
+      if (pill) {
+        pill.classList.toggle('layer-on', layerOn);
+        pill.setAttribute('aria-pressed', String(layerOn));
+      }
+      if (pillDot) {
+        pillDot.style.background = hudSal.hex;
+        pillDot.style.boxShadow = `0 0 0 2px ${hudSal.hex}38`;
+      }
+      if (pillTxt) {
+        const fmt = tr('salinityPillFmt');
+        const clsName = tr(hudSal.clsKey);
+        pillTxt.textContent = typeof fmt === 'function'
+          ? fmt(hudSal.ec.toFixed(1), clsName)
+          : `ECe: ${hudSal.ec.toFixed(1)} dS/m · ${clsName}`;
+      }
+
+      /* 3. Update Map Panel Soil Salinity Strip */
+      const badgeEl = $('salinityStripBadge');
+      if (badgeEl) {
+        badgeEl.className = `salinity-class-badge ${fieldSal.tier}`;
+        badgeEl.textContent = `${tr(fieldSal.clsKey)} · ${fieldSal.ec.toFixed(1)} dS/m`;
+      }
+      const stripBtn = $('salinityStripLayerBtn');
+      const stripBtnTxt = $('salinityStripLayerBtnText');
+      if (stripBtn) {
+        stripBtn.classList.toggle('active', layerOn);
+        stripBtn.setAttribute('aria-pressed', String(layerOn));
+      }
+      if (stripBtnTxt) {
+        stripBtnTxt.textContent = layerOn ? tr('salinityMapToggleOff') : tr('salinityMapToggleOn');
+      }
+      if ($('salinityEcVal')) {
+        $('salinityEcVal').textContent = `${fieldSal.ec.toFixed(1)} dS/m`;
+      }
+      if ($('salinityPctVal')) {
+        $('salinityPctVal').textContent = `${fieldSal.tdsPct.toFixed(2)}% (~${fieldSal.gPerL} g/L)`;
+      }
+      if ($('salinityThirdLbl') && $('salinityThirdVal')) {
+        if (fieldSal.isPoly) {
+          $('salinityThirdLbl').textContent = tr('salinityRangeLabel');
+          $('salinityThirdVal').textContent = `${fieldSal.minEc.toFixed(1)} – ${fieldSal.maxEc.toFixed(1)} dS/m`;
+        } else {
+          $('salinityThirdLbl').textContent = tr('salinityDepthProfileLabel');
+          $('salinityThirdVal').textContent = `${fieldSal.rootEc.toFixed(1)} dS/m`;
+        }
+      }
+      const markerEl = $('salinityScaleMarker');
+      if (markerEl) {
+        // Non-linear mapping so 0..2..4..8..16 dS/m matches the 5 visual scale segments
+        let pct = 8;
+        if (fieldSal.ec <= 2) pct = (fieldSal.ec / 2) * 25;
+        else if (fieldSal.ec <= 4) pct = 25 + ((fieldSal.ec - 2) / 2) * 25;
+        else if (fieldSal.ec <= 8) pct = 50 + ((fieldSal.ec - 4) / 4) * 25;
+        else pct = 75 + Math.min(23, ((fieldSal.ec - 8) / 8) * 23);
+        markerEl.style.left = `${Math.max(2, Math.min(98, pct)).toFixed(1)}%`;
+        markerEl.style.borderColor = fieldSal.hex;
+      }
+      if ($('salinityStripAdvice')) {
+        $('salinityStripAdvice').textContent = tr(fieldSal.adviceKey);
+      }
+    }
+
+    function toggleSalinityLayer() {
+      if (map.hasLayer(salinityLayer)) {
+        map.removeLayer(salinityLayer);
+      } else {
+        map.addLayer(salinityLayer);
+      }
+      syncOverlayToggleButtons();
+      updateSalinityUI();
+    }
+
     let layerControl = null;
     function rebuildLayerControl() {
       if (layerControl) {
@@ -8364,6 +9218,7 @@
       { id: 'labelsToggleBtn', layer: satLabels },
       { id: 'ndviToggleBtn', layer: nasaNdvi },
       { id: 'smapToggleBtn', layer: nasaSmap },
+      { id: 'salinityToggleBtn', layer: salinityLayer },
       { id: 'lstToggleBtn', layer: nasaLst },
       { id: 'imergToggleBtn', layer: nasaImerg }
     ];
@@ -8381,6 +9236,7 @@
         wBtn.classList.toggle('active', !!windState.enabled);
         wBtn.setAttribute('aria-pressed', String(!!windState.enabled));
       }
+      updateSalinityUI(salinityState.hoverLat, salinityState.hoverLng);
     }
 
     OVERLAY_BUTTONS.forEach(({ id, layer }) => {
@@ -8396,8 +9252,16 @@
       });
     });
 
+    if ($('mapSalinityPill')) {
+      $('mapSalinityPill').addEventListener('click', toggleSalinityLayer);
+    }
+    if ($('salinityStripLayerBtn')) {
+      $('salinityStripLayerBtn').addEventListener('click', toggleSalinityLayer);
+    }
+
     initWindCanvas();
     createWindHudControl();
+    createSalinityHudControl();
     syncOverlayToggleButtons();
 
     map.on('overlayadd layeradd', e => {
@@ -8437,7 +9301,18 @@
 
     map.on('mousemove', e => {
       const w = map.wrapLatLng(e.latlng);
+      salinityState.hoverLat = w.lat;
+      salinityState.hoverLng = w.lng;
       updateCoordsPill(w.lat, w.lng);
+      updateSalinityUI(w.lat, w.lng);
+    });
+    map.on('mouseout', () => {
+      salinityState.hoverLat = null;
+      salinityState.hoverLng = null;
+      if (S.sel) {
+        updateCoordsPill(S.sel.lat, S.sel.lng);
+      }
+      updateSalinityUI();
     });
     map.on('zoomend', () => {
       if (S.sel) {
@@ -8446,6 +9321,7 @@
         const c = map.wrapLatLng(map.getCenter());
         updateCoordsPill(c.lat, c.lng);
       }
+      updateSalinityUI();
     });
 
     const draw = L.layerGroup().addTo(map);
@@ -8693,6 +9569,7 @@
       };
       if (typeof resetAiSimulation === 'function') resetAiSimulation(true);
       renderSelectedOnMap(move);
+      if (typeof updateSalinityUI === 'function') updateSalinityUI();
       renderList();
       load();
     }
@@ -9514,6 +10391,24 @@
           desc: tr('riskWindDesc')(num(maxWind, 0))
         });
 
+        /* 5. Soil Salinity & Osmotic Stress Risk */
+        const salInfo = typeof sampleFieldSalinity === 'function' ? sampleFieldSalinity(t) : null;
+        if (salInfo) {
+          const salScore = Math.min(100, Math.max(8, Math.round((salInfo.ec / 11.5) * 100)));
+          const salTier = salInfo.ec >= 6.5 ? 'high' : salInfo.ec >= 2.8 ? 'mid' : 'low';
+          const salLvl = salTier === 'high' ? tr('lvlHigh') : salTier === 'mid' ? tr('lvlMed') : tr('lvlLow');
+          risks.push({
+            name: tr('riskSalinityName'),
+            val: salScore,
+            tier: salTier,
+            lvl: salLvl,
+            desc: tr('riskSalinityDesc')(salInfo.ec.toFixed(1), tr(salInfo.clsKey))
+          });
+          if (salInfo.ec >= 4.0) {
+            recParts.push(tr('recHighSalinity'));
+          }
+        }
+
         if (rain >= 15) {
           recParts.push(tr('recHeavyRain'));
         } else if (waterDeficit >= 65) {
@@ -9572,12 +10467,15 @@
       if (F) {
         const s0Pct = F.s0[0] != null ? Math.min(99, F.s0[0] * 100) : null;
         const s1Pct = F.s1[0] != null ? Math.min(99, F.s1[0] * 100) : null;
+        const salNow = typeof sampleFieldSalinity === 'function' ? sampleFieldSalinity(t) : null;
         sn += `<h3 style="margin-top:8px">${tr('todayAverages')}</h3>
           <div><span>${tr('moist0_1')}</span><strong>${num(s0Pct)}%</strong></div>
           <div><span>${tr('moist3_9')}</span><strong>${num(s1Pct)}%</strong></div>
-          <div><span>${tr('soilTemp0_6')}</span><strong>${num(F.t0[0], 1)} / ${num(F.t6[0], 1)} °C</strong></div>`;
+          <div><span>${tr('soilTemp0_6')}</span><strong>${num(F.t0[0], 1)} / ${num(F.t6[0], 1)} °C</strong></div>
+          ${salNow ? `<div><span>${tr('soilSalinityNowLabel')}</span><strong>${salNow.ec.toFixed(1)} dS/m (${tr(salNow.clsKey)})</strong></div>` : ''}`;
       }
       $('soilNow').innerHTML = sn;
+      if (typeof updateSalinityUI === 'function') updateSalinityUI();
 
       const now = new Date();
       const months = tr('months');
@@ -10660,12 +11558,19 @@
         }
       }
 
+      const salSample = typeof sampleFieldSalinity === 'function' ? sampleFieldSalinity(t) : null;
+      if (salSample) {
+        salinity = salSample.aiTier;
+        if (salSample.ec >= 8.0) texture = 'saline';
+      }
+
       return {
         texture,
         ph: +ph.toFixed(1),
         om: +om.toFixed(1),
         elev,
         salinity,
+        ecDsM: salSample ? salSample.ec : 1.4,
         placeName: null,
         source: 'auto'
       };

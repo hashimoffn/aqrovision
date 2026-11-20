@@ -1,7 +1,7 @@
 # AqroVision
 
 ## Fayllar
-- `index.html` — əsas dashboard, xəritə, külək axınları, AI meyvə/tərəvəz tövsiyələri və hesab interfeysi
+- `index.html` — əsas dashboard, xəritə, külək axınları, torpaq duzluluğu (ECe dS/m) xəritə qatı və indikatoru, AI meyvə/tərəvəz tövsiyələri və hesab interfeysi
 - `server.py` — daxili Python backend serveri (hesabların yaradılması, giriş, Google Sign-In və sahə/qeyd fayllarının saxlanması)
 - `backend/` — yaradılan istifadəçi hesab faylları (`backend/accounts.json` və `backend/users/<id>.json`)
 - `start_server.bat` — Windows-da backend serveri bir kliklə işə salmaq üçün
@@ -19,4 +19,4 @@ Sonra brauzerdə `http://127.0.0.1:8000` ünvanına daxil olun.
 ## Məlumat mənbələri
 - **Keçmiş torpaq nəmliyi, yağıntı, temperatur:** NASA POWER (səth, kök zonası, profil nəmliyi).
 - **Bu gün, 7 günlük proqnoz və canlı xəritə külək axınları:** Open-Meteo & NASA POWER.
-- **Xəritə:** Esri peyk, Google peyk, OpenStreetMap, NASA GIBS qatları, Nominatim axtarışı.
+- **Xəritə:** Esri peyk, Google peyk, OpenStreetMap, NASA GIBS qatları, Torpaq Duzluluğu (ECe dS/m) istilik xəritəsi və canlı diaqnostika paneli, Nominatim axtarışı.
